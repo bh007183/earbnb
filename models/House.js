@@ -1,5 +1,4 @@
-const bcrypt = require("bcrypt")
-const salt = 10
+
 module.exports = function(sequelize, DataTypes){
     const House = sequelize.define("House", {
          title: {
@@ -21,14 +20,12 @@ module.exports = function(sequelize, DataTypes){
          address: {
              type: DataTypes.STRING,
              allowNull: false
-         },
-         
-         
-
+         }
 
     })
     House.associate = function(models){
         House.belongsTo(models.User, {onDelete: "cascade"})
+        House.hasMany(models.Review)
     }
     return House
 }
