@@ -1,5 +1,5 @@
-const {sql} = require("apollo-server-express")
-const typeDefs = sql`
+const {gql} = require("apollo-server-express")
+const typeDefs = gql`
 
 
 `
