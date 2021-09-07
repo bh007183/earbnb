@@ -5,7 +5,10 @@ const resolvers = {
         }
     },
     Mutation: {
-        login: async(parent, args, context) => {
+        listerLogin: async(parent, args, context) => {
+            console.log("heheh")
+        },
+        renterLogin: async(parent, args, context) => {
             console.log("heheh")
         }
     }

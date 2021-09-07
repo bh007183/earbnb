@@ -6,12 +6,12 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.INTEGER
         },
         baths:{
-            type: DataTypes.INTEGER
+            type: DataTypes.FLOAT
         },
         pets: {
             type: DataTypes.BOOLEAN
         },
-        offstree: {
+        offstreet: {
             type: DataTypes.BOOLEAN
         },
         other: {
@@ -20,8 +20,6 @@ module.exports = function(sequelize, DataTypes){
         
 
     })
-    Info.associate = function(models){
-        Info.belongsTo(models.House, {as: "info", onDelete: "cascade"})
-    }
+   
     return Info
 }

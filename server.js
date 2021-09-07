@@ -22,7 +22,7 @@ const appmiddle = async() => {
 
 appmiddle()
 
-db.once("open", function(){
+db.sequelize.sync({force: false }, function(){
     app.listen(PORT, () => {
         console.log("http://localhost:8080")
         console.log(`http://localhost:${PORT}/graphql`)
