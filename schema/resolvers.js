@@ -58,10 +58,21 @@ const resolvers = {
             if(!context.user){
                 throw new Error("Session expired or Unauthorized")
             }
-            args.house["ListerId"] = context.user.id
+            let User = await db.Lister.findOne({
+                where:{
+                    id: context.user.id
+                }
+            })
+            if(User){
+                args.house["ListerId"] = context.user.id
             let house = await db.House.create(args.house)
             house.createInfo(args.house.info)
             return house
+
+            }else{
+                throw new Error("Unauthorized Access")
+            }
+            
         }catch(err){
             throw new ApolloError(err.message);
         }

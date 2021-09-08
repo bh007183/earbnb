@@ -20,7 +20,11 @@ module.exports = function(sequelize, DataTypes){
          address: {
              type: DataTypes.STRING,
              allowNull: false
-         }
+         },
+         availability: {
+            type: DataTypes.JSON,
+        }
+         
 
     })
     House.associate = function(models){
