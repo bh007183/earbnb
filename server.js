@@ -1,15 +1,17 @@
 const express = require("express")
-const db = require("./models/index")
+const db = require("./models")
 const PORT = process.env.PORT || 8080
 const app = express()
 const {resolvers, typeDefs} = require("./schema")
+const {verify} = require("./Security")
 const {ApolloServer} = require("apollo-server-express")
+require("dotenv").config()
 
 
 const server = new ApolloServer({
     resolvers,
     typeDefs,
-    // context
+    context: verify
 })
 
 app.use(express.urlencoded({ extended: true }));
@@ -22,9 +24,12 @@ const appmiddle = async() => {
 
 appmiddle()
 
-db.sequelize.sync({force: false }, function(){
-    app.listen(PORT, () => {
+db.sequelize.sync({force: false}).then(function(){
+    app.listen(PORT, function(){
         console.log("http://localhost:8080")
         console.log(`http://localhost:${PORT}/graphql`)
     })
+
 })
+    
+

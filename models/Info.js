@@ -20,6 +20,8 @@ module.exports = function(sequelize, DataTypes){
         
 
     })
-   
+   Info.associate = function(models){
+       Info.belongsTo(models.House)
+   }
     return Info
 }

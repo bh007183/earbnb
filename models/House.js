@@ -26,6 +26,7 @@ module.exports = function(sequelize, DataTypes){
     House.associate = function(models){
         House.belongsTo(models.Lister, {onDelete: "cascade"})
         House.hasMany(models.Review)
+        House.hasMany(models.Renter)
         House.hasOne(models.Info)
     }
     return House
