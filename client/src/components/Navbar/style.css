@@ -1,0 +1,24 @@
+nav{
+    height: 60px;
+    display: flex;
+}
+.navContain{
+    width: 50%;
+
+}
+#rightNavContain{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+#rightNavContain a{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    padding: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    border-color: black;
+
+}

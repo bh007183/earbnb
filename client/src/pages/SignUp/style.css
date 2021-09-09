@@ -1,0 +1,31 @@
+#signUpOptions{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    border-width: .5px;
+    border-color:black ;
+    padding: 15px;
+    height: 500px;
+    width: 40vw;
+    border-style: solid;
+    text-align: center;
+}
+#signUpLinks{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    
+}
+#signUpLinks a{
+    border-radius: 10px;
+    border-width: .5px;
+    border-color:black ;
+    padding: 15px;
+    width: 140px;
+    border-style: solid;
+    text-decoration: none;
+    margin-top: 10px;
+
+}

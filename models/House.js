@@ -17,6 +17,7 @@ module.exports = function(sequelize, DataTypes){
              type: DataTypes.JSON,
              allowNull: false
          },
+         
          address: {
              type: DataTypes.STRING,
              allowNull: false
