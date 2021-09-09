@@ -27,8 +27,8 @@ export const searchRentals = (data) => apiCallBegan({
     url: `https://mashvisor-api.p.rapidapi.com/airbnb-property/top-reviewed?state=${data.state}&city=${data.city}&reviews_count=15&page=1`,
     method: "GET",
 	headers: {
-		"x-rapidapi-host": "mashvisor-api.p.rapidapi.com",
-		"x-rapidapi-key": "eba8306e12msh1c414b154242eb7p11f720jsnd5aaf05cb4b3"
+		"x-rapidapi-host": "",
+		"x-rapidapi-key": ""
 	},
     onSuccess: setResults.type,
     onError: setError.type
