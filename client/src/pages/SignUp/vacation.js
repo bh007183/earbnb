@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./style.css";
 import Button from "@material-ui/core/Button"
 import {RENTER_CREATE} from "../../gql/mutations"
@@ -29,6 +29,11 @@ export default function Vacation() {
         }
 
     }
+    useEffect(() => {
+        if(data){
+            console.log(localStorage.setItem("token", data.listerCreate.token))
+        }
+    }, [data])
   return (
     <form onSubmit={handleSubmit} id="vacSignUpForm">
       <h4>Alright! You want an account for hosting!</h4>

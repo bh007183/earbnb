@@ -19,7 +19,7 @@ function App() {
 
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:8080/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -29,7 +29,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: localStorage.getItem("token") ? localStorage.getItem("token") : "",
+      authorization: token ? `Bearer ${token}` : "",
     }
   }
 });

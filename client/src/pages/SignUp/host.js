@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./style.css";
 import Button from "@material-ui/core/Button"
 import {useMutation} from "@apollo/client"
@@ -28,6 +28,12 @@ export default function Host() {
             alert("Broken!!!! Panick!!!! Its Broken!!!!")
         }
     }
+    useEffect(() => {
+        if(data){
+            console.log(localStorage.setItem("token", data.listerCreate.token))
+        }
+    }, [data])
+    
   return (
     <form onSubmit={handleSubmit} id="vacSignUpForm">
       <h4>Alright! You want an account for hosting!</h4>
