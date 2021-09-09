@@ -44,3 +44,4 @@ mutation listerCreateHouse($house: HouseInput!) {
     title
   }
 }`
+export {LISTER_LOGIN ,RENTER_LOGIN ,LISTER_CREATE,RENTER_CREATE, LISTER_CREATE_HOUSE }

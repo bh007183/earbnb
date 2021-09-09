@@ -47,7 +47,7 @@ const client = new ApolloClient({
         <Route exact path="/">
             <Home/>
           </Route>
-        <Route exact path="/login">
+        <Route path="/login">
             <Login/>
           </Route>
         <Route path="/signup">

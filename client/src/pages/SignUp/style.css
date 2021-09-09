@@ -7,7 +7,7 @@
     border-width: .5px;
     border-color:black ;
     padding: 15px;
-    height: 500px;
+   
     width: 40vw;
     border-style: solid;
     text-align: center;
@@ -27,5 +27,11 @@
     border-style: solid;
     text-decoration: none;
     margin-top: 10px;
+
+}
+#vacSignUpForm input{
+    font-size: 30px;
+    margin-top: 10px;
+    width: 98%;
 
 }
