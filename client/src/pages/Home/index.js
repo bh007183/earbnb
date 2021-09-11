@@ -1,16 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-
+import {setLocation} from "../../Redux/externalApiActions"
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
+import {Redirect} from "react-router-dom"
+import {useDispatch, useSelector} from "react-redux"
 export default function Home() {
-  const [age, setAge] = React.useState("");
+
+  const [redirect, setRedirect] = useState(false)
+  const dispatch = useDispatch()
+ 
+  const location = useSelector(state => state.Store.Results.location)
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    let name = event.target.name
+    let value = event.target.value
+    dispatch(setLocation({
+      ...location, [name]: value
+    }));
   };
 
   useEffect(() => {
@@ -18,14 +28,19 @@ export default function Home() {
       console.log(position.coords.latitude, position.coords.longitude);
     });
   }, []);
+  const handleSearch = (event) => {
+    event.preventDefault()
+   setRedirect(true)
+  }
   return (
     <section className="container">
+      {redirect === true ? <Redirect push to="/search"/> : <></>}
       <header id="homeHeader">
         <div id="headerImage"></div>
-        <form id="searchForm">
+        <form id="searchForm" onSubmit={handleSearch}>
           <h1>Find places to stay on Earbnb</h1>
           <p>Discover entire homes and private rooms perfect for any trip.</p>
-          <input style={{ width: "98%" }} placeholder="City"></input>
+          <input onChange={handleChange} style={{ width: "98%" }} value={location.city} name="city" placeholder="City"></input>
 
           <FormControl
             style={{ width: "100%", marginTop: "15px" }}
@@ -37,12 +52,13 @@ export default function Home() {
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
-              value={age}
+              value={location.state}
               onChange={handleChange}
-              label="Age"
+              name="state"
+              label="State"
             >
               <MenuItem value=""></MenuItem>
-              <option value="AL">Alabama</option>
+              <MenuItem  value="AL">Alabama</MenuItem >
               <MenuItem value="AK">Alaska</MenuItem>
               <MenuItem value="AZ">Arizona</MenuItem>
               <MenuItem value="AR">Arkansas</MenuItem>
@@ -99,6 +115,9 @@ export default function Home() {
             style={{ width: "100%", marginTop: "15px" }}
             variant="contained"
             color="secondary"
+            type="submit"
+            
+
           >
             Secondary
           </Button>

@@ -5,6 +5,10 @@ const slice = createSlice({
     name: "SearchResult",
     initialState:{
         results:[],
+        location: {
+            city: "",
+            state: ""
+        },
         Error: "",
         Success: "",
     },
@@ -17,10 +21,19 @@ const slice = createSlice({
         },
         setError: (SearchResult, action)=> {
             SearchResult.Error= action.payload
+        },
+        setLocation: (SearchResult, action) => {
+            if(action.payload.city){
+                SearchResult.location.city = action.payload.city
+            }
+            if(action.payload.state){
+                SearchResult.location.state = action.payload.state
+            }
+
         }
     }
 })
-export const {setResults, setSuccess, setError} = slice.actions
+export const {setResults, setSuccess, setError, setLocation} = slice.actions
 export default slice.reducer
 
 export const searchRentals = (data) => apiCallBegan({

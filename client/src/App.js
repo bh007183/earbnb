@@ -13,6 +13,7 @@ import Home from "./pages/Home"
 import SignUp from "./pages/SignUp"
 import Login from "./pages/Login"
 import Navbar from "./components/Navbar"
+import SearchDisplay from "./pages/SearchResults"
 import Container from '@material-ui/core/Container';
 import configureStore from "./Redux/configureStore"
 import {Provider} from "react-redux"
@@ -55,6 +56,9 @@ const client = new ApolloClient({
           </Route>
         <Route path="/signup">
             <SignUp/>
+          </Route>
+        <Route path="/search">
+            <SearchDisplay/>
           </Route>
       </Container>
       </Provider>
