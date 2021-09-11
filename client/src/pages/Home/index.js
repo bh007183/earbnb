@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./style.css";
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
+
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
@@ -12,6 +12,12 @@ export default function Home() {
     const handleChange = (event) => {
       setAge(event.target.value);
     };
+
+    useEffect(() => {
+      window.navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords.latitude, position.coords.longitude);
+      });
+    }, [])
   return (
     <section className="container">
       <header id="homeHeader">
