@@ -24,12 +24,16 @@ input InfoInput{
     address: String!
   }
   type Lister {
+    id: ID!
     username: String!
     password: String!
+    status: String!
   }
   type Renter {
+    id: ID!
     username: String!
     password: String!
+    status: String!
   }
   type Review {
     title: String

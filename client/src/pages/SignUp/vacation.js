@@ -31,7 +31,8 @@ export default function Vacation() {
     }
     useEffect(() => {
         if(data){
-            console.log(localStorage.setItem("token", data.listerCreate.token))
+            window.location.href = `/${data.renterCreate.user.status}/${data.renterCreate.user.id}`
+            console.log(localStorage.setItem("token", data.renterCreate.token))
         }
     }, [data])
   return (

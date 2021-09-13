@@ -6,6 +6,8 @@ mutation listerLogin($email: String!, $password: String!) {
     token
     user{
       username
+      status
+      id
     }
   }
   
@@ -16,6 +18,8 @@ mutation renterLogin($email: String!, $password: String!) {
     token
     user{
       username
+      status
+      id
     }
   }
   
@@ -26,6 +30,8 @@ mutation listerCreate($username: String!, $email: String! $password: String!) {
     token
     user{
       username
+      status
+      id
     }
   }
 }`
@@ -35,6 +41,8 @@ mutation renterCreate($username: String!, $email: String! $password: String!) {
     token
     user{
       username
+      status
+      id
     }
   }
 }`

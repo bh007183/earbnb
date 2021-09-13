@@ -21,6 +21,10 @@ module.exports = function(sequelize, DataTypes){
                 }
             }
         },
+        status: {
+            type: DataTypes.STRING,
+           defaultValue: "Renter"
+        }
         
         
     })

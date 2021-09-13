@@ -17,3 +17,7 @@ code {
  
  position: relative;
 }
+.flexCenter{
+  display: flex;
+  justify-content: center;
+}

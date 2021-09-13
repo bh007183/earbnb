@@ -16,7 +16,7 @@ module.exports = {
     if (!token) {
       throw new Error("Issue generating token!");
     }
-    return { token: token, user: { id: user.id, username: user.username } };
+    return { token: token, user: { id: user.id, username: user.username, status: user.status } };
   },
   verify: async function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
