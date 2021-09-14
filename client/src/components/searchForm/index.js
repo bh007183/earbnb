@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import Select from "@material-ui/core/Select";
 import {Redirect} from "react-router-dom"
 import InputLabel from "@material-ui/core/InputLabel";
@@ -6,15 +6,23 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import "./style.css"
+import axios from "axios"
+import { useApolloClient } from '@apollo/client';
+import { CACHED_RESULTS } from '../../gql/querys';
+import {useQuery} from "@apollo/client"
 
 export default function SearchForm() {
+    const{data, loading, error} = useQuery(CACHED_RESULTS)
+    const client = useApolloClient();
     const [location, setLocation] = useState({
         city: "",
         state: ""
       })
       const [redirect, setRedirect] = useState(false)
       
-    
+    if(data){
+        console.log(data)
+    }
       const handleChange = (event) => {
         let name = event.target.name
         let value = event.target.value
@@ -23,24 +31,37 @@ export default function SearchForm() {
         });
       };
       
+      useEffect(() => {
+        if(data){
+            console.log(data)
+        }
+      }, [])
       const handleSearch = (event) => {
         event.preventDefault()
-        axios.request({
-            url: `https://mashvisor-api.p.rapidapi.com/airbnb-property/top-reviewed?state=${location.state}&city=${location.city}&reviews_count=15&page=1`,
-            method: "GET",
+        axios.get(`https://mashvisor-api.p.rapidapi.com/airbnb-property/top-reviewed?state=${location.state}&city=${location.city}&reviews_count=15&page=1`,{
             headers: {
                 "x-rapidapi-host": process.env.REACT_APP_HOST,
                 "x-rapidapi-key": process.env.REACT_APP_APIKEY
             }
-        }).then(data => {
-            console.log(data)
+        }).then(res => {
+            console.log(res)
+            client.writeQuery({
+                query: CACHED_RESULTS,
+                data: { // Contains the data to write
+                  results: {
+                    __typename: 'Results',
+                    array: res.data.content.list,
+                  },
+                },
+                
+              });
         }).catch(err => {
             console.log(err)
         })
     //    setRedirect(true)
       }
     return (
-        <form id="searchForm" onSubmit={handleSearch}>
+        <form className="searchForm" onSubmit={handleSearch}>
              {redirect === true ? <Redirect push to="/search"/> : <></>}
         <h1>Find places to stay on Earbnb</h1>
         <p>Discover entire homes and private rooms perfect for any trip.</p>

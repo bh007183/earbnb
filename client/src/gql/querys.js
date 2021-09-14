@@ -8,4 +8,10 @@ query renterUser{
     }
 }
 ` 
-export {RENTER_USER}
+const CACHED_RESULTS = gql`
+query WriteSearchResponse{
+  results{
+    array
+  }
+}`
+export {RENTER_USER, CACHED_RESULTS}
