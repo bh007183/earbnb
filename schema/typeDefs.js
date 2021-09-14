@@ -56,7 +56,7 @@ input InfoInput{
     token: ID!
   }
   type Query {
-    me(username: String!, password: String): Lister
+    renterUser: Renter
   }
   type Mutation {
     listerLogin(email: String!, password: String!): ListerAuth

@@ -11,15 +11,16 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home"
 import SignUp from "./pages/SignUp"
+import RenterLoggedIn from "./pages/RenterLoggedIn"
 import Login from "./pages/Login"
 import Navbar from "./components/Navbar"
 import SearchDisplay from "./pages/SearchResults"
 import Container from '@material-ui/core/Container';
-import configureStore from "./Redux/configureStore"
-import {Provider} from "react-redux"
+
+
 
 function App() {
-const store = configureStore()
+
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:8080/graphql',
@@ -45,7 +46,7 @@ const client = new ApolloClient({
     <ApolloProvider client={client}>
       <Router>
         <Switch>
-          <Provider store={store}>
+          
         <Container style={{padding: "0px"}} maxWidth="lg">
           <Navbar/>
         <Route exact path="/">
@@ -60,8 +61,11 @@ const client = new ApolloClient({
         <Route path="/search">
             <SearchDisplay/>
           </Route>
+        <Route path="/Renter">
+            <RenterLoggedIn/>
+          </Route>
       </Container>
-      </Provider>
+   
           
         </Switch>
       </Router>

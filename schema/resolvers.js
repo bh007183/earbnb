@@ -4,8 +4,15 @@ const { ApolloError } = require("apollo-server-express");
 const { verify } = require("../Security");
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
-      console.log("hehehe");
+    renterUser: async (parent, args, context) => {
+      if(context.user){
+        let data = db.Renter.findOne({where:{
+          id: context.user.id
+        }})
+        return data
+      }else{
+        throw new ApolloError("You must loggin!")
+      }
     },
   },
   Mutation: {
@@ -27,7 +34,7 @@ const resolvers = {
     },
     renterLogin: async (parent, args, context) => {
       try {
-        let user = await db.Lister.findOne({
+        let user = await db.Renter.findOne({
           where: {
             email: args.email,
           },

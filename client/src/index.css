@@ -21,3 +21,6 @@ code {
   display: flex;
   justify-content: center;
 }
+.fifty{
+  width: 50%;
+}

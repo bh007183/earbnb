@@ -54,13 +54,13 @@ export default function Login() {
     if(renterInfo.data){
       let data = renterInfo.data
       console.log(data)
-        // window.location.href = `/${data.renterLogin.user.status}/${data.renterLogin.user.id}`
+        window.location.href = `/${data.renterLogin.user.status}/${data.renterLogin.user.id}`
         console.log(localStorage.setItem("token", data.renterLogin.token))
     }
     if(listerInfo.data){
       let data = listerInfo.data
       console.log(data)
-        // window.location.href = `/${data.listerLogin.user.status}/${data.listerLogin.user.id}`
+        window.location.href = `/${data.listerLogin.user.status}/${data.listerLogin.user.id}`
         console.log(localStorage.setItem("token", data.listerLogin.token))
     }
 }, [renterInfo.data || listerInfo.data])
