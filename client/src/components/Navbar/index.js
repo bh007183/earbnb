@@ -8,7 +8,7 @@ import {useQuery} from "@apollo/client"
 export default function Navbar() {
     const {data, error, loading} = useQuery(RENTER_USER)
     const handleLogout = () => {
-        localStorage.clear()
+        localStorage.removeItem("token")
         window.location.href ="/"
     }
  

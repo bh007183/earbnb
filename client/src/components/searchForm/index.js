@@ -44,7 +44,7 @@ export default function SearchForm() {
                 "x-rapidapi-key": process.env.REACT_APP_APIKEY
             }
         }).then(res => {
-            console.log(res)
+            localStorage.setItem("data", JSON.stringify(res))
             client.writeQuery({
                 query: CACHED_RESULTS,
                 data: { // Contains the data to write
@@ -58,7 +58,7 @@ export default function SearchForm() {
         }).catch(err => {
             console.log(err)
         })
-    //    setRedirect(true)
+      //  setRedirect(true)
       }
     return (
         <form className="searchForm" onSubmit={handleSearch}>
