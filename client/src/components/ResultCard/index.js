@@ -8,15 +8,14 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { CACHED_RESULTS } from '../../gql/querys';
-import {useQuery} from "@apollo/client"
+import {Link, useRouteMatch} from 'react-router-dom'
+
 export default function ResultCard(props) {
-    const {data, loading, error} = useQuery(CACHED_RESULTS)
-    console.log(data)
+  
 
 
 
-
+let { path, url } = useRouteMatch();
     return (
         <Card style={{width: "90%", marginTop: "10px"}}>
         <CardActionArea>
@@ -36,9 +35,9 @@ export default function ResultCard(props) {
         </CardActionArea>
         <CardActions style={{display: "flex", justifyContent:"space-between"}}>
     <p>{props.item.price_formatted}</p>
-          <Button size="small" color="primary">
+          <Link to={`${url}/viewHouse/${props.index}`}>
             Learn More
-          </Button>
+          </Link>
         </CardActions>
       </Card>
     )
