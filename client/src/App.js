@@ -7,6 +7,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  useRouteMatch,
   Link
 } from "react-router-dom";
 import Home from "./pages/Home"
@@ -18,11 +19,11 @@ import Navbar from "./components/Navbar"
 import SearchDisplay from "./pages/SearchResults"
 import Container from '@material-ui/core/Container';
 
-import {Link, useRouteMatch} from 'react-router-dom'
+
 
 function App() {
 
-  let { path, url } = useRouteMatch();
+  
 const httpLink = createHttpLink({
   uri: 'http://localhost:8080/graphql',
 });
@@ -64,9 +65,6 @@ const client = new ApolloClient({
           </Route>
         <Route path="/Renter">
             <RenterLoggedIn/>
-          </Route>
-        <Route exact path="/Renter">
-            <ViewHouse/>
           </Route>
       </Container>
    

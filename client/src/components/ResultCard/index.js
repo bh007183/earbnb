@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect}from 'react'
 
 
 import Card from '@material-ui/core/Card';
@@ -8,14 +8,17 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {Link, useRouteMatch} from 'react-router-dom'
+import {Link, useRouteMatch, Route} from 'react-router-dom'
+import ViewHouse from "../../pages/ViewHouse"
 
 export default function ResultCard(props) {
   
 
 
+  let { path, url } = useRouteMatch();
 
-let { path, url } = useRouteMatch();
+
+
     return (
         <Card style={{width: "90%", marginTop: "10px"}}>
         <CardActionArea>
